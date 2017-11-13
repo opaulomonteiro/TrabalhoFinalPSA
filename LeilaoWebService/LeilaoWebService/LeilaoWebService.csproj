@@ -131,9 +131,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711111845268_Criacao.cs" />
-    <Compile Include="Migrations\201711111845268_Criacao.Designer.cs">
-      <DependentUpon>201711111845268_Criacao.cs</DependentUpon>
+    <Compile Include="Migrations\201711132213183_Criacao.cs" />
+    <Compile Include="Migrations\201711132213183_Criacao.Designer.cs">
+      <DependentUpon>201711132213183_Criacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Leilao.cs" />
@@ -159,8 +159,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711111845268_Criacao.resx">
-      <DependentUpon>201711111845268_Criacao.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711132213183_Criacao.resx">
+      <DependentUpon>201711132213183_Criacao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

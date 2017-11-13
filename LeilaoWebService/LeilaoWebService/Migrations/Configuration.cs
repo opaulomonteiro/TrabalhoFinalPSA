@@ -26,8 +26,9 @@ namespace LeilaoWebService.Migrations
             produtos.ForEach(s => context.Produto.AddOrUpdate(p => p.BreveDescricao, s));
 
 
-            var lotes = new List<Lote> { new Lote { Produtos = produtos } };
-            lotes.ForEach(s => context.Lote.AddOrUpdate(l => l.LoteID, s));
+            var lote =  new Lote { Produtos = produtos } ;
+            context.Lote.AddOrUpdate(u => u.LoteID, lote);
+
 
             var usuario = new Usuario { Nome= "Paulo" ,Cpf = "12345678912" , Cnpj = "", Email = "paulo@exemplo.com" };
             context.Usuario.AddOrUpdate(u => u.Nome, usuario);
@@ -37,7 +38,7 @@ namespace LeilaoWebService.Migrations
             {
                 new Leilao { Natureza = "Oferta", Forma = "Aberto", DataDeInicio = DateTime.Today,
                     DataDeFim = new DateTime(2017, 11,14), Usuario = usuario ,
-                    LanceMinimo = 150.00,  LanceMaximo= 1500.00, Lotes = lotes
+                    LanceMinimo = 150.00,  LanceMaximo= 1500.00, Lote = lote
                 }
             };
 

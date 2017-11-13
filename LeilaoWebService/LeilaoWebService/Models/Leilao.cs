@@ -15,6 +15,6 @@ namespace LeilaoWebService.Models
         public virtual Usuario Usuario { get; set; }
         public double LanceMinimo { get; set; }
         public double LanceMaximo { get; set; }
-        public virtual ICollection<Lote> Lotes { get; set; }
+        public virtual Lote Lote { get; set; }
     }
 }

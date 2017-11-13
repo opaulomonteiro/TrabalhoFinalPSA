@@ -14,7 +14,7 @@ namespace LeilaoWebService.Data
             {
                 //fazendo load das entidades filhas
                 var leilao = contexto.Leilao
-                    .Include("Lotes.Produtos")
+                    .Include("Lote.Produtos")
                     .Include("Usuario")
                     .ToList();
                 return leilao;
