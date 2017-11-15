@@ -1,0 +1,12 @@
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\LeilaoWebPersistencia.dll.config
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\LeilaoWebPersistencia.dll
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\LeilaoWebPersistencia.pdb
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\EntityFramework.dll
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\EntityFramework.xml
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.csprojResolveAssemblyReference.cache
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.Migrations.Criacao.resources
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.csproj.GenerateResource.Cache
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.dll
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.pdb

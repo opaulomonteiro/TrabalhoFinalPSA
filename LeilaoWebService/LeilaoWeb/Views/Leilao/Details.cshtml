@@ -1,0 +1,66 @@
+﻿@model LeilaoWebPersistencia.Models.Leilao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Leilao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Natureza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Natureza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Forma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Forma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDeInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDeInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDeFim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDeFim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LanceMinimo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LanceMinimo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LanceMaximo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LanceMaximo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
