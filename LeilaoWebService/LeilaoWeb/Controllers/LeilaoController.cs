@@ -2,6 +2,11 @@
 using System.Web.Mvc;
 using LeilaoWebPersistencia.Models;
 using LeilaoWebNegocio;
+using System.Net.Http;
+using System;
+using System.Net.Http.Headers;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace LeilaoWeb.Controllers
 {
@@ -10,9 +15,22 @@ namespace LeilaoWeb.Controllers
         private LeilaoWebFachada leilaoFachada = new LeilaoWebFachada();
 
         // GET: Leilao
-        public ActionResult Index()
+        public async System.Threading.Tasks.Task<ActionResult> Index()
         {
-            return View(leilaoFachada.BuscarTodosLeiloes());
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:50992/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            IEnumerable<Leilao> leilao = null;
+            HttpResponseMessage response = await client.GetAsync("api/leilao");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                leilao = JsonConvert.DeserializeObject<IEnumerable<Leilao>>(content);
+            }
+
+            return View(leilao);
         }
 
         // GET: Leilao/Details/5

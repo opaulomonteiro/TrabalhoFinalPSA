@@ -32,7 +32,11 @@ namespace LeilaoWebPersistencia.Data
             {
                 using (var contexto = new LeilaoContext())
                 {
-                    IEnumerable<Leilao> leiloes = contexto.Leilao.ToList();
+                    //fazendo load das entidades filhas
+                    var leiloes = contexto.Leilao
+                        .Include("Lotes.Produtos")
+                        .Include("Usuario")
+                        .ToList();
                     return leiloes;
                 }
             }
@@ -49,8 +53,12 @@ namespace LeilaoWebPersistencia.Data
             {
                 using (var contexto = new LeilaoContext())
                 {
-                    var listaDeLeiloes = contexto.Leilao.ToList();
-                    return listaDeLeiloes.Find(p => p.ID.Equals(id));
+                    var leilao = contexto.Leilao
+                     .Include("Lotes.Produtos")
+                     .Include("Usuario")
+                     .ToList()
+                     .Find(l => l.ID.Equals(id));
+                    return leilao;
                 }
             }
             catch (Exception e)
