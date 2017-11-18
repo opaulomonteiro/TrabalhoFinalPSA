@@ -1,9 +1,9 @@
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\bin\Debug\LeilaoWebNegocio.dll
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\bin\Debug\LeilaoWebNegocio.pdb
-C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\obj\Debug\LeilaoWebNegocio.dll
-C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\obj\Debug\LeilaoWebNegocio.pdb
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\bin\Debug\LeilaoWebPersistencia.dll
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\bin\Debug\EntityFramework.dll
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\bin\Debug\LeilaoWebPersistencia.pdb
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\bin\Debug\EntityFramework.xml
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\obj\Debug\LeilaoWebNegocio.csprojResolveAssemblyReference.cache
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\obj\Debug\LeilaoWebNegocio.dll
+C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebNegocio\obj\Debug\LeilaoWebNegocio.pdb

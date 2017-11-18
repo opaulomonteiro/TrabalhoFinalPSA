@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,12 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\Leilao\LeilaoDAOToLeilaoModel.cs" />
+    <Compile Include="Builder\Leilao\LeilaoModelToLeilaoDAO.cs" />
+    <Compile Include="Builder\Lote\LoteDAOToLoteModel.cs" />
+    <Compile Include="Builder\Lote\LoteModelToLoteDAO.cs" />
+    <Compile Include="Builder\Produto\ProdutoDAOToProdutoModel.cs" />
+    <Compile Include="Builder\Produto\ProdutoModelToProdutoDAO.cs" />
+    <Compile Include="Builder\Usuario\UsuarioDAOToUsuarioModel.cs" />
+    <Compile Include="Builder\Usuario\UsuarioModelToUsuarioDAO.cs" />
+    <Compile Include="Fachada\LoteFachada.cs" />
+    <Compile Include="Fachada\ProdutoFachada.cs" />
+    <Compile Include="Fachada\UsuarioFachada.cs" />
+    <Compile Include="Model\LeilaoModel.cs" />
+    <Compile Include="Model\LoteModel.cs" />
+    <Compile Include="Model\ProdutoModel.cs" />
+    <Compile Include="Model\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LeilaoWebFachada.cs" />
-    <Compile Include="Service\LeilaoService.cs" />
-    <Compile Include="Service\LoteService.cs" />
-    <Compile Include="Service\ProdutoService.cs" />
-    <Compile Include="Service\UsuarioService.cs" />
+    <Compile Include="Fachada\LeilaoWebFachada.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LeilaoWebPersistencia\LeilaoWebPersistencia.csproj">
