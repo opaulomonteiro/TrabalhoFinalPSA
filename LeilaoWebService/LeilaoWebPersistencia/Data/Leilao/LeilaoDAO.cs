@@ -26,6 +26,11 @@ namespace LeilaoWebPersistencia.Data
             }
         }
 
+        public Lote Add(Lote lote)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Leilao> GetAll()
         {
             try
@@ -34,7 +39,7 @@ namespace LeilaoWebPersistencia.Data
                 {
                     //fazendo load das entidades filhas
                     var leiloes = contexto.Leilao
-                        .Include("Lotes.Produtos")
+                        .Include("Lote.Produto")
                         .Include("Usuario")
                         .ToList();
                     return leiloes;
@@ -54,10 +59,10 @@ namespace LeilaoWebPersistencia.Data
                 using (var contexto = new LeilaoContext())
                 {
                     var leilao = contexto.Leilao
-                     .Include("Lotes.Produtos")
+                     .Include("Lote.Produto")
                      .Include("Usuario")
                      .ToList()
-                     .Find(l => l.ID.Equals(id));
+                     .Find(l => l.LeilaoID.Equals(id));
                     return leilao;
                 }
             }
@@ -74,7 +79,7 @@ namespace LeilaoWebPersistencia.Data
             {
                 using (var contexto = new LeilaoContext())
                 {
-                    var leilao = contexto.Leilao.ToList().Find(p => p.ID.Equals(id));
+                    var leilao = contexto.Leilao.ToList().Find(p => p.LeilaoID.Equals(id));
                     if (leilao != null)
                     {
                         contexto.Leilao.Attach(leilao);
@@ -97,7 +102,7 @@ namespace LeilaoWebPersistencia.Data
                 using (var contexto = new LeilaoContext())
                 {
                     var listaDeLeiloes = contexto.Leilao.ToList();
-                    Leilao leilaoDoBanco = listaDeLeiloes.Where(u => u.ID.Equals(leilao.ID)).First();
+                    Leilao leilaoDoBanco = listaDeLeiloes.Where(u => u.LeilaoID.Equals(leilao.LeilaoID)).First();
                     if (leilaoDoBanco != null)
                     {
                         leilaoDoBanco.Usuario = leilao.Usuario;

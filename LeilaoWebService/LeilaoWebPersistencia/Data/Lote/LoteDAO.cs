@@ -50,7 +50,7 @@ namespace LeilaoWebPersistencia.Data
                 using (var contexto = new LeilaoContext())
                 {
                     var listaDeLotes = contexto.Lote.ToList();
-                    return listaDeLotes.Find(p => p.ID.Equals(id));
+                    return listaDeLotes.Find(p => p.LoteID.Equals(id));
                 }
             }
             catch (Exception e)
@@ -66,7 +66,7 @@ namespace LeilaoWebPersistencia.Data
             {
                 using (var contexto = new LeilaoContext())
                 {
-                    var lote = contexto.Lote.ToList().Find(p => p.ID.Equals(id));
+                    var lote = contexto.Lote.ToList().Find(p => p.LoteID.Equals(id));
                     if (lote != null)
                     {
                         contexto.Lote.Attach(lote);
@@ -89,10 +89,10 @@ namespace LeilaoWebPersistencia.Data
                 using (var contexto = new LeilaoContext())
                 {
                     var listaDeLotes = contexto.Lote.ToList();
-                    Lote loteDoBanco = listaDeLotes.Where(u => u.ID.Equals(lote.ID)).First();
+                    Lote loteDoBanco = listaDeLotes.Where(u => u.LoteID.Equals(lote.LoteID)).First();
                     if (loteDoBanco != null)
                     {
-                        loteDoBanco.Produtos = lote.Produtos;
+                        loteDoBanco.Produto = lote.Produto;
 
                         contexto.SaveChanges();
                         return true;

@@ -75,9 +75,9 @@
     <Compile Include="Data\LeilaoContext.cs" />
     <Compile Include="Data\Produto\ProdutoDAO.cs" />
     <Compile Include="Data\Usuario\UsuarioDAO.cs" />
-    <Compile Include="Migrations\201711151854506_Criacao.cs" />
-    <Compile Include="Migrations\201711151854506_Criacao.Designer.cs">
-      <DependentUpon>201711151854506_Criacao.cs</DependentUpon>
+    <Compile Include="Migrations\201711181730520_Criação.cs" />
+    <Compile Include="Migrations\201711181730520_Criação.Designer.cs">
+      <DependentUpon>201711181730520_Criação.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Leilao.cs" />
@@ -85,11 +85,6 @@
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711151854506_Criacao.resx">
-      <DependentUpon>201711151854506_Criacao.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
@@ -109,6 +104,11 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711181730520_Criação.resx">
+      <DependentUpon>201711181730520_Criação.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

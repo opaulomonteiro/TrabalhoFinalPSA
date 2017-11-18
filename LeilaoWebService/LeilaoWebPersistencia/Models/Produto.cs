@@ -7,5 +7,6 @@ namespace LeilaoWebPersistencia.Models
         public string BreveDescricao { get; set; }
         public string DescricaoCompleta { get; set; }
         public string Categoria { get; set; }
+        public virtual Lote Lote { get; set; }
     }
 }

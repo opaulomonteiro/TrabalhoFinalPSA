@@ -52,7 +52,7 @@ namespace LeilaoWebPersistencia.Data
                 using (var contexto = new LeilaoContext())
                 {
                     var listaDeUsuarios = contexto.Usuario.ToList();
-                    return listaDeUsuarios.Find(u => u.ID.Equals(id));
+                    return listaDeUsuarios.Find(u => u.UsuarioID.Equals(id));
                 }
             }
             catch (Exception e)
@@ -69,7 +69,7 @@ namespace LeilaoWebPersistencia.Data
             {
                 using (var contexto = new LeilaoContext())
                 {
-                    var usuario = contexto.Usuario.ToList().Find(u => u.ID.Equals(id));
+                    var usuario = contexto.Usuario.ToList().Find(u => u.UsuarioID.Equals(id));
                     if (usuario != null)
                     {
                         contexto.Usuario.Attach(usuario);
@@ -93,7 +93,7 @@ namespace LeilaoWebPersistencia.Data
                 using (var contexto = new LeilaoContext())
                 {
                     var listaDeUsuarios = contexto.Usuario.ToList();
-                    Usuario usuarioDoBanco = listaDeUsuarios.Where(u => u.ID.Equals(usuario.ID)).First();
+                    Usuario usuarioDoBanco = listaDeUsuarios.Where(u => u.UsuarioID.Equals(usuario.UsuarioID)).First();
                     if (usuarioDoBanco != null)
                     {
                         usuarioDoBanco.Nome = usuario.Nome;

@@ -25,8 +25,8 @@ namespace LeilaoWebPersistencia.Migrations
             produtos.ForEach(s => context.Produto.AddOrUpdate(p => p.BreveDescricao, s));
 
 
-            var lote = new Lote { Produtos = produtos };
-            context.Lote.AddOrUpdate(u => u.ID, lote);
+            var lote = new Lote { Produto = produtos };
+            context.Lote.AddOrUpdate(u => u.LoteID, lote);
 
 
             var usuario = new Usuario { Nome = "Paulo", Cpf = "12345678912", Cnpj = "", Email = "paulo@exemplo.com" };
