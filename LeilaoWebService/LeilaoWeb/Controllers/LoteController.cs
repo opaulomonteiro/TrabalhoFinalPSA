@@ -1,18 +1,20 @@
 ﻿using System.Net;
 using System.Web.Mvc;
-using LeilaoWebPersistencia.Models;
-using LeilaoWebNegocio;
+using LeilaoWebNegocio.Model;
+using LeilaoWebNegocio.Fachada;
+using System.Collections.Generic;
 
 namespace LeilaoWeb.Controllers
 {
     public class LoteController : Controller
     {
-        private LeilaoWebFachada leilaoFachada = new LeilaoWebFachada();
+        private LoteFachada fachada = new LoteFachada();
 
         // GET: Lote
         public ActionResult Index()
         {
-            return View(leilaoFachada.BuscarTodosLotes());
+            IEnumerable<LoteModel> models = fachada.GetAll();
+            return View(models);
         }
 
         // GET: Lote/Details/5
@@ -22,12 +24,12 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lote lote = leilaoFachada.BuscarLotePorId(id.Value);
-            if (lote == null)
+            LoteModel loteModel = fachada.GetById(id.Value);
+            if (loteModel == null)
             {
                 return HttpNotFound();
             }
-            return View(lote);
+            return View(loteModel);
         }
 
         // GET: Lote/Create
@@ -41,15 +43,15 @@ namespace LeilaoWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID")] Lote lote)
+        public ActionResult Create([Bind(Include = "ID")] LoteModel loteModel)
         {
             if (ModelState.IsValid)
             {
-                leilaoFachada.CriarLote(lote);
+                fachada.Add(loteModel);
                 return RedirectToAction("Index");
             }
 
-            return View(lote);
+            return View(loteModel);
         }
 
         // GET: Lote/Edit/5
@@ -59,12 +61,12 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lote lote = leilaoFachada.BuscarLotePorId(id.Value);
-            if (lote == null)
+            LoteModel loteModel = fachada.GetById(id.Value);
+            if (loteModel == null)
             {
                 return HttpNotFound();
             }
-            return View(lote);
+            return View(loteModel);
         }
 
         // POST: Lote/Edit/5
@@ -72,14 +74,14 @@ namespace LeilaoWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID")] Lote lote)
+        public ActionResult Edit([Bind(Include = "ID")] LoteModel loteModel)
         {
             if (ModelState.IsValid)
             {
-                leilaoFachada.EditarLote(lote);
+                fachada.Update(loteModel);
                 return RedirectToAction("Index");
             }
-            return View(lote);
+            return View(loteModel);
         }
 
         // GET: Lote/Delete/5
@@ -89,12 +91,12 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lote lote = leilaoFachada.BuscarLotePorId(id.Value);
-            if (lote == null)
+            LoteModel loteModel = fachada.GetById(id.Value);
+            if (loteModel == null)
             {
                 return HttpNotFound();
             }
-            return View(lote);
+            return View(loteModel);
         }
 
         // POST: Lote/Delete/5
@@ -102,7 +104,7 @@ namespace LeilaoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            leilaoFachada.ExcluirLote(id);
+            fachada.Remove(id);
             return RedirectToAction("Index");
         }        
     }

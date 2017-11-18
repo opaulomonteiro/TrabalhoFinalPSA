@@ -20,10 +20,10 @@ namespace LeilaoWebNegocio.Builder
 
         public IEnumerable<UsuarioModel> ConvertList(IEnumerable<Usuario> usuariosDB)
         {
-            IEnumerable<UsuarioModel> usuariosModel = new List<UsuarioModel>();
+            List<UsuarioModel> usuariosModel = new List<UsuarioModel>();
 
-            usuariosDB.ToList().ForEach(u => usuariosModel.ToList().Add(Convert(u)));
-            return usuariosModel;
+            usuariosDB.ToList().ForEach(u => usuariosModel.Add(Convert(u)));
+            return usuariosModel.AsEnumerable();
         }
     }
 }

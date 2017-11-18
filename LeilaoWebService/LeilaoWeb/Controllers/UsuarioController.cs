@@ -1,18 +1,18 @@
 ﻿using System.Net;
 using System.Web.Mvc;
-using LeilaoWebPersistencia.Models;
-using LeilaoWebNegocio;
+using LeilaoWebNegocio.Model;
+using LeilaoWebNegocio.Fachada;
 
 namespace LeilaoWeb.Controllers
 {
     public class UsuarioController : Controller
     {
-        private LeilaoWebFachada leilaoFachada = new LeilaoWebFachada();
+        private UsuarioFachada fachada = new UsuarioFachada();
 
         // GET: Usuario
         public ActionResult Index()
         {
-            return View(leilaoFachada.BuscarToDosUsuarios());
+            return View(fachada.GetAll());
         }
 
         // GET: Usuario/Details/5
@@ -22,12 +22,12 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = leilaoFachada.BuscarUsuarioPorId(id.Value);
-            if (usuario == null)
+            UsuarioModel usuarioModel = fachada.GetById(id.Value);
+            if (usuarioModel == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(usuarioModel);
         }
 
         // GET: Usuario/Create
@@ -41,15 +41,15 @@ namespace LeilaoWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UsuarioID,Nome,Cpf,Cnpj,Email")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "ID,Nome,Cpf,Cnpj,Email")] UsuarioModel usuarioModel)
         {
             if (ModelState.IsValid)
             {
-                leilaoFachada.CriarUsuario(usuario);
+                fachada.Add(usuarioModel);
                 return RedirectToAction("Index");
             }
 
-            return View(usuario);
+            return View(usuarioModel);
         }
 
         // GET: Usuario/Edit/5
@@ -59,12 +59,12 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = leilaoFachada.BuscarUsuarioPorId(id.Value);
-            if (usuario == null)
+            UsuarioModel usuarioModel = fachada.GetById(id.Value);
+            if (usuarioModel == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(usuarioModel);
         }
 
         // POST: Usuario/Edit/5
@@ -72,14 +72,14 @@ namespace LeilaoWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UsuarioID,Nome,Cpf,Cnpj,Email")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Cpf,Cnpj,Email")] UsuarioModel usuarioModel)
         {
             if (ModelState.IsValid)
             {
-                leilaoFachada.EditarUsuario(usuario);
+                fachada.Update(usuarioModel);
                 return RedirectToAction("Index");
             }
-            return View(usuario);
+            return View(usuarioModel);
         }
 
         // GET: Usuario/Delete/5
@@ -89,21 +89,21 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = leilaoFachada.BuscarUsuarioPorId(id.Value);
-            if (usuario == null)
+            UsuarioModel usuarioModel = fachada.GetById(id.Value);
+            if (usuarioModel == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(usuarioModel);
         }
 
         // POST: Usuario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            leilaoFachada.ExcluirUsuario(id);
+        {
+            fachada.Remove(id);
             return RedirectToAction("Index");
-        }
+        }        
     }
 }

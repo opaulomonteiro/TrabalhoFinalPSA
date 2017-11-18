@@ -1,4 +1,4 @@
-﻿@model LeilaoWebPersistencia.Models.Lote
+﻿@model LeilaoWebNegocio.Model.LoteModel
 
 @{
     ViewBag.Title = "Edit";
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Lote</h4>
+        <h4>LoteModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)

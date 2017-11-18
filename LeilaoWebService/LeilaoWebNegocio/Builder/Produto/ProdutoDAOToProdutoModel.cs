@@ -19,10 +19,10 @@ namespace LeilaoWebNegocio.Builder
 
         public IEnumerable<ProdutoModel> ConvertList(IEnumerable<Produto> produtosDB)
         {
-            IEnumerable<ProdutoModel> produtosModel = new List<ProdutoModel>();
+            List<ProdutoModel> produtosModel = new List<ProdutoModel>();
 
-            produtosDB.ToList().ForEach(p => produtosModel.ToList().Add(Convert(p)));
-            return produtosModel;
-        }
+            produtosDB.ToList().ForEach(p => produtosModel.Add(Convert(p)));
+            return produtosModel.AsEnumerable();
+        }        
     }
 }

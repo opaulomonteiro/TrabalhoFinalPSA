@@ -1,12 +1,14 @@
-﻿using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Web.Mvc;
-using LeilaoWebPersistencia.Models;
+using LeilaoWebNegocio.Model;
 using LeilaoWebNegocio;
 using System.Net.Http;
-using System;
+using LeilaoWebPersistencia.Models;
 using System.Net.Http.Headers;
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using LeilaoWebNegocio.Builder;
 
 namespace LeilaoWeb.Controllers
 {
@@ -30,7 +32,9 @@ namespace LeilaoWeb.Controllers
                 leilao = JsonConvert.DeserializeObject<IEnumerable<Leilao>>(content);
             }
 
-            return View(leilao);
+            IEnumerable<LeilaoModel> leiloesModel = new LeilaoDAOToLeilaoModel().ConvertList(leilao);
+
+            return View(leiloesModel);
         }
 
         // GET: Leilao/Details/5
@@ -40,7 +44,7 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Leilao leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
+            LeilaoModel leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
             if (leilao == null)
             {
                 return HttpNotFound();
@@ -59,15 +63,15 @@ namespace LeilaoWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Natureza,Forma,DataDeInicio,DataDeFim,LanceMinimo,LanceMaximo")] Leilao leilao)
+        public ActionResult Create([Bind(Include = "LoteID,Natureza,Forma,DataDeInicio,DataDeFim,LanceMinimo,LanceMaximo")] LeilaoModel leilaoModel)
         {
             if (ModelState.IsValid)
             {
-                leilaoFachada.CriarLeilao(leilao);
+                leilaoFachada.CriarLeilao(leilaoModel);
                 return RedirectToAction("Index");
             }
 
-            return View(leilao);
+            return View(leilaoModel);
         }
 
         // GET: Leilao/Edit/5
@@ -77,7 +81,7 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Leilao leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
+            LeilaoModel leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
             if (leilao == null)
             {
                 return HttpNotFound();
@@ -90,14 +94,14 @@ namespace LeilaoWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Natureza,Forma,DataDeInicio,DataDeFim,LanceMinimo,LanceMaximo")] Leilao leilao)
+        public ActionResult Edit([Bind(Include = "LoteID,Natureza,Forma,DataDeInicio,DataDeFim,LanceMinimo,LanceMaximo")] LeilaoModel leilaoModel)
         {
             if (ModelState.IsValid)
             {
-                leilaoFachada.EditarLeilao(leilao);
+                leilaoFachada.EditarLeilao(leilaoModel);
                 return RedirectToAction("Index");
             }
-            return View(leilao);
+            return View(leilaoModel);
         }
 
         // GET: Leilao/Delete/5
@@ -107,7 +111,7 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Leilao leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
+            LeilaoModel leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
             if (leilao == null)
             {
                 return HttpNotFound();
@@ -122,6 +126,6 @@ namespace LeilaoWeb.Controllers
         {
             leilaoFachada.ExcluirLeilao(id);
             return RedirectToAction("Index");
-        }       
+        }
     }
 }

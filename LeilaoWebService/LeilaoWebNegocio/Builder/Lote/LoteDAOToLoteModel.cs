@@ -28,10 +28,10 @@ namespace LeilaoWebNegocio.Builder
 
         public IEnumerable<LoteModel> ConvertList(IEnumerable<Lote> lotesDB)
         {
-            IEnumerable<LoteModel> lotesModel = new List<LoteModel>();
+            List<LoteModel> lotesModel = new List<LoteModel>();
 
-            lotesDB.ToList().ForEach(p => lotesModel.ToList().Add(Convert(p)));
-            return lotesModel;
+            lotesDB.ToList().ForEach(p => lotesModel.Add(Convert(p)));
+            return lotesModel.AsEnumerable();
         }
     }
 }

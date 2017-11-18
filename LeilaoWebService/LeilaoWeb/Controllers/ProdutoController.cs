@@ -1,18 +1,18 @@
 ﻿using System.Net;
 using System.Web.Mvc;
-using LeilaoWebPersistencia.Models;
-using LeilaoWebNegocio;
+using LeilaoWebNegocio.Model;
+using LeilaoWebNegocio.Fachada;
 
 namespace LeilaoWeb.Controllers
 {
     public class ProdutoController : Controller
     {
-        private LeilaoWebFachada leilaoFachada = new LeilaoWebFachada();
+        private ProdutoFachada fachada = new ProdutoFachada();
 
         // GET: Produto
         public ActionResult Index()
         {
-            return View(leilaoFachada.BuscarToDosProdutos());
+            return View(fachada.GetAll());
         }
 
         // GET: Produto/Details/5
@@ -22,12 +22,12 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = leilaoFachada.BuscarProdutoPorId(id.Value);
-            if (produto == null)
+            ProdutoModel produtoModel = fachada.GetById(id.Value);
+            if (produtoModel == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(produtoModel);
         }
 
         // GET: Produto/Create
@@ -41,15 +41,15 @@ namespace LeilaoWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,BreveDescricao,DescricaoCompleta,Categoria")] Produto produto)
+        public ActionResult Create([Bind(Include = "ID,BreveDescricao,DescricaoCompleta,Categoria")] ProdutoModel produtoModel)
         {
             if (ModelState.IsValid)
             {
-                leilaoFachada.CriarProduto(produto);
+                fachada.Add(produtoModel);
                 return RedirectToAction("Index");
             }
 
-            return View(produto);
+            return View(produtoModel);
         }
 
         // GET: Produto/Edit/5
@@ -59,12 +59,12 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = leilaoFachada.BuscarProdutoPorId(id.Value);
-            if (produto == null)
+            ProdutoModel produtoModel = fachada.GetById(id.Value);
+            if (produtoModel == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(produtoModel);
         }
 
         // POST: Produto/Edit/5
@@ -72,14 +72,14 @@ namespace LeilaoWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,BreveDescricao,DescricaoCompleta,Categoria")] Produto produto)
+        public ActionResult Edit([Bind(Include = "ID,BreveDescricao,DescricaoCompleta,Categoria")] ProdutoModel produtoModel)
         {
             if (ModelState.IsValid)
             {
-                leilaoFachada.EditarProduto(produto);
+                fachada.Update(produtoModel);
                 return RedirectToAction("Index");
             }
-            return View(produto);
+            return View(produtoModel);
         }
 
         // GET: Produto/Delete/5
@@ -89,12 +89,12 @@ namespace LeilaoWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = leilaoFachada.BuscarProdutoPorId(id.Value);
-            if (produto == null)
+            ProdutoModel produtoModel = fachada.GetById(id.Value);
+            if (produtoModel == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(produtoModel);
         }
 
         // POST: Produto/Delete/5
@@ -102,8 +102,8 @@ namespace LeilaoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            leilaoFachada.ExcluirProduto(id);
+            fachada.Remove(id);
             return RedirectToAction("Index");
-        }        
+        }       
     }
 }

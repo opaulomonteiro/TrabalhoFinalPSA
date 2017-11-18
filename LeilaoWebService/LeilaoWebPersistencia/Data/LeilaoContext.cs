@@ -8,7 +8,7 @@ namespace LeilaoWebPersistencia.Data
     {
         public LeilaoContext() : base("LeilaoContext")
         {
-
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         //Removendo pluralização dos nomes das tabelas
@@ -23,5 +23,6 @@ namespace LeilaoWebPersistencia.Data
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Lote> Lote { get; set; }
+              
     }
 }

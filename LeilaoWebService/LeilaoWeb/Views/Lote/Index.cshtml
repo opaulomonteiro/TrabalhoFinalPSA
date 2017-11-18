@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LeilaoWebPersistencia.Models.Lote>
+﻿@model IEnumerable<LeilaoWebNegocio.Model.LoteModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,8 +12,11 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Produtos)
-        </th>        
+        </th>
         <th></th>
     </tr>
 
@@ -21,12 +24,17 @@
 {
     <tr>
         <td>
-            @Html.DisplayNameFor(model => model.Produtos)
-        </td>       
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            @Html.DisplayFor(modelItem => item.Produtos)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

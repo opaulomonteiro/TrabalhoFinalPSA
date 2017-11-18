@@ -1,4 +1,4 @@
-﻿@model LeilaoWebPersistencia.Models.Leilao
+﻿@model LeilaoWebNegocio.Model.LeilaoModel
 
 @{
     ViewBag.Title = "Create";
@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Leilao</h4>
         <hr />
@@ -18,15 +18,26 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Natureza, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Natureza, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Natureza, new List<SelectListItem>
+    {
+                        new SelectListItem() {Text = "", Value=""},
+                        new SelectListItem() {Text = "Demanda", Value="Demanda"},
+                        new SelectListItem() {Text = "Oferta", Value="Oferta"},
+    }, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Natureza, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Forma, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Forma, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Forma, new List<SelectListItem>
+    {
+                        new SelectListItem() {Text = "", Value=""},
+                        new SelectListItem() {Text = "Aberto", Value="Aberto"},
+                        new SelectListItem() {Text = "Fechado", Value="Fechado"},
+    }, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Forma, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +45,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DataDeInicio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DataDeInicio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DataDeInicio, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
                 @Html.ValidationMessageFor(model => model.DataDeInicio, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,7 +53,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DataDeFim, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DataDeFim, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DataDeFim, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
                 @Html.ValidationMessageFor(model => model.DataDeFim, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,7 +61,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LanceMinimo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LanceMinimo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.LanceMinimo, new { htmlAttributes = new { @class = "currency" } })
                 @Html.ValidationMessageFor(model => model.LanceMinimo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,7 +69,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LanceMaximo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LanceMaximo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.LanceMaximo, new { htmlAttributes = new { @class = "currency" } })
                 @Html.ValidationMessageFor(model => model.LanceMaximo, "", new { @class = "text-danger" })
             </div>
         </div>
