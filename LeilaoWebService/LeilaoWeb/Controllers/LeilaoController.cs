@@ -19,37 +19,52 @@ namespace LeilaoWeb.Controllers
         // GET: Leilao
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:50992/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            IEnumerable<Leilao> leilao = null;
-            HttpResponseMessage response = await client.GetAsync("api/leilao");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                string content = await response.Content.ReadAsStringAsync();
-                leilao = JsonConvert.DeserializeObject<IEnumerable<Leilao>>(content);
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://localhost:50992/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                IEnumerable<Leilao> leilao = null;
+                HttpResponseMessage response = await client.GetAsync("api/leilao");
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    leilao = JsonConvert.DeserializeObject<IEnumerable<Leilao>>(content);
+                }
+
+                IEnumerable<LeilaoModel> leiloesModel = new LeilaoDAOToLeilaoModel().ConvertList(leilao);
+
+                return View(leiloesModel);
+            }
+            catch (Exception e)
+            {
+                return HttpNotFound();
             }
 
-            IEnumerable<LeilaoModel> leiloesModel = new LeilaoDAOToLeilaoModel().ConvertList(leilao);
-
-            return View(leiloesModel);
         }
 
         // GET: Leilao/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LeilaoModel leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
-            if (leilao == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                LeilaoModel leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
+                if (leilao == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(leilao);
+            }catch(Exception e)
             {
                 return HttpNotFound();
             }
-            return View(leilao);
+           
         }
 
         // GET: Leilao/Create
@@ -65,28 +80,42 @@ namespace LeilaoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "LoteID,Natureza,Forma,DataDeInicio,DataDeFim,LanceMinimo,LanceMaximo")] LeilaoModel leilaoModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                leilaoFachada.CriarLeilao(leilaoModel);
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    leilaoFachada.CriarLeilao(leilaoModel);
+                    return RedirectToAction("Index");
+                }
 
-            return View(leilaoModel);
+                return View(leilaoModel);
+            }catch(Exception e)
+            {
+                return View(leilaoModel);
+            }
+           
         }
 
         // GET: Leilao/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LeilaoModel leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
-            if (leilao == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                LeilaoModel leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
+                if (leilao == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(leilao);
+            }catch(Exception e)
             {
-                return HttpNotFound();
+                return View();
             }
-            return View(leilao);
+           
         }
 
         // POST: Leilao/Edit/5
@@ -95,28 +124,42 @@ namespace LeilaoWeb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "LoteID,Natureza,Forma,DataDeInicio,DataDeFim,LanceMinimo,LanceMaximo")] LeilaoModel leilaoModel)
-        {
-            if (ModelState.IsValid)
+        {           
+            try
             {
-                leilaoFachada.EditarLeilao(leilaoModel);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    leilaoFachada.EditarLeilao(leilaoModel);
+                    return RedirectToAction("Index");
+                }
+                return View(leilaoModel);
+            }catch(Exception e)
+            {
+                return View(leilaoModel);
             }
-            return View(leilaoModel);
+           
         }
 
         // GET: Leilao/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LeilaoModel leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
-            if (leilao == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                LeilaoModel leilao = leilaoFachada.BuscarLeilaoPorId(id.Value);
+                if (leilao == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(leilao);
+            }catch(Exception e)
             {
-                return HttpNotFound();
+                return View();
             }
-            return View(leilao);
+            
         }
 
         // POST: Leilao/Delete/5
@@ -124,8 +167,15 @@ namespace LeilaoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            leilaoFachada.ExcluirLeilao(id);
-            return RedirectToAction("Index");
+            try
+            {
+                leilaoFachada.ExcluirLeilao(id);
+                return RedirectToAction("Index");
+            }catch(Exception e)
+            {
+                return View();
+            }
+           
         }
     }
 }

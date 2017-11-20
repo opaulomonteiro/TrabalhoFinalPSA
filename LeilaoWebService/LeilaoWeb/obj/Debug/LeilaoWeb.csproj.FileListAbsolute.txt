@@ -140,3 +140,7 @@ C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\Leil
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWeb\obj\Debug\LeilaoWeb.dll
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWeb\obj\Debug\LeilaoWeb.pdb
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWeb\bin\LeilaoWebNegocio.dll
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWeb\bin\LeilaoWebPersistencia.dll
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWeb\bin\LeilaoWebNegocio.pdb
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWeb\bin\LeilaoWebPersistencia.pdb

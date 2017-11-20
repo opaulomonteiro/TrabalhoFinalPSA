@@ -10,3 +10,15 @@ C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\Leil
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.dll
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.pdb
 C:\Users\paulo\Desktop\projetos\faculdade\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.csprojResolveAssemblyReference.cache
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\LeilaoWebPersistencia.dll.config
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\LeilaoWebPersistencia.dll
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\LeilaoWebPersistencia.pdb
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\EntityFramework.dll
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\EntityFramework.xml
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.csprojResolveAssemblyReference.cache
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.Migrations.Criação.resources
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.csproj.GenerateResource.Cache
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.dll
+C:\Users\11105929\Desktop\TrabalhoFinalPSA\LeilaoWebService\LeilaoWebPersistencia\obj\Debug\LeilaoWebPersistencia.pdb
